@@ -2,7 +2,7 @@ import { Todo } from "./models/todo.component";
 
 let todos: Todo[] = [];
 
-export function add(todo: string): Promise<Todo> {
+export function add(todo: string): Promise<Todo> { //funzione per aggiunta task in array
   return new Promise ((res, rej) => {
     setTimeout(() => {
       const newTodo: Todo = {
@@ -16,19 +16,7 @@ export function add(todo: string): Promise<Todo> {
   })
 }
 
-//export function rem(todo: string): Promise<Todo> {
-//  return new Promise ((res, rej) => {
-//    setTimeout(() => {
-//      const newTodo: Todo = {
-//        completed: false
-//      };
-//      todos.splice(index, 1)
-//      res(newTodo);
-//    }, 2000);
-//  })
-//}
-
-export function get(): Promise<Todo[]> {
+export function get(): Promise<Todo[]> { //recupero e stampa array
   return new Promise((res, rej) => {
     setTimeout(() => {
       res(todos);
