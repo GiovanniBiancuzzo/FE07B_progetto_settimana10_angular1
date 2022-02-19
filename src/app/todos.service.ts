@@ -4,7 +4,7 @@ import { Todo } from "./models/todo.component";
 let todos: Todo[] = [];
 let todosT: Todo[] = [];
 
-export function add(todo: string): Promise<Todo> {//aggiunta elemento array
+export function add(todo: string): Promise<Todo> { //funzione per aggiunta task in array
   return new Promise ((res, rej) => {
     setTimeout(() => {
       const newTodo: Todo = {
