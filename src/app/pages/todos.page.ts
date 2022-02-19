@@ -8,11 +8,12 @@ import * as TodoServices from '../todos.service';
     <div>
       <p>Ops, non ci sono task</p>
       <ul>
-        <li  *ngFor="let item of todos">{{item.title}}</li>
+        <li *ngFor="let item of todos; let i = index">{{item.title}}</li>
+        <button (click)="completato(item, i)">&#x2611;</button>
       </ul>
     </div>
     <div>
-      <input type="text" [(ngModel)]="todo"  placeholder="Aggiungi un task">
+      <input type="text" [(ngModel)]="todo" placeholder="Aggiungi un task">
       <button (click)="aggiungi()">Aggiungi</button>
     </div>
   `,
@@ -25,7 +26,8 @@ export class TodosPage {
   todos!: Todo[];
 
   constructor() {
-    TodoServices.get().then((todos) => {
+    TodoServices.getF().then((todos) => {
+      console.log(todos);
       this.todos = todos;
     })
   }
@@ -36,4 +38,19 @@ export class TodosPage {
       this.todo = "";
     })
   }
+
+  completato(item: Todo, i: number) {
+    TodoServices.changeState(todos, i).then(() => {
+      TodoServices.getT();
+    })
+    console.log(this.todo)
+  };
+
+  //rimuovi(){
+  //  rem(this.todo).then((todo) => {
+  //    console.log(todo);
+  //    this.todo = "";
+  //  })
+  //}
+
 }
